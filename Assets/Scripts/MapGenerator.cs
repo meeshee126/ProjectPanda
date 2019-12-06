@@ -9,19 +9,32 @@ public class MapGenerator : MonoBehaviour
 
     Mesh mesh;
 
-    public Vector3 size;
+    public Vector3 spawnPostion;
 
     void Start()
     {
-        mesh = ramps[0].GetComponent<MeshFilter>().mesh;
-
-        size =  new Vector3 (mesh.bounds.extents.x * 2, mesh.bounds.extents.y * 2, mesh.bounds.extents.z * 2);
-        
-        //Instantiate(ramps[Random.Range(0, ramps.Count)]);
+        mesh = GetComponent<MeshFilter>().sharedMesh;
     }
 
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "Panda" && this.gameObject.name == "TutorialTerrain")
+        {
+            spawnPostion = new Vector3(-141.8f, 4.48f, 0);
+            Instantiate(ramps[Random.Range(0, ramps.Count)], this.transform.position + spawnPostion, Quaternion.Euler(0f,0, -15f));
+            Destroy(this);
+        }
+
+        if (other.name == "Panda")
+        {
+            spawnPostion = new Vector3(-141.8f, 4.48f, 0);
+            Instantiate(ramps[Random.Range(0, ramps.Count)], this.transform.position + spawnPostion, Quaternion.Euler(0f, 0, -15f));
+            Destroy(this);
+        }
     }
 }

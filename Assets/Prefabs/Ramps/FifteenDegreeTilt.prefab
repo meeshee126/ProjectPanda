@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4540529631290437580}
   - component: {fileID: 2234465812447832591}
   - component: {fileID: 645855725517290016}
+  - component: {fileID: 2091050581912114183}
   m_Layer: 0
   m_Name: FifteenDegreeTilt
   m_TagString: Untagged
@@ -110,3 +111,16 @@ MonoBehaviour:
   ramps:
   - {fileID: 2828231601276689168}
   spawnPostion: {x: 0, y: 0, z: 0}
+--- !u!65 &2091050581912114183
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2828231601276689168}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 199.42854, y: 3112.1865, z: 4807.8193}
+  m_Center: {x: -98.868195, y: 314.22385, z: -170.8313}

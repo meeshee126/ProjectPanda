@@ -326,7 +326,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1002209203}
-  - component: {fileID: 1002209202}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -334,21 +333,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1002209202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1002209201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca2dddc7d3cc7f42b94dfba56dbd0b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ramps:
-  - {fileID: 2893880465725986067, guid: d878ccf0747d7eb47ae88c24be5f53f6, type: 3}
-  spawnPostion: {x: 0, y: 0, z: 0}
 --- !u!4 &1002209203
 Transform:
   m_ObjectHideFlags: 0
@@ -394,75 +378,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1375221418
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -4216859302048453862, guid: acb33c691afb0ca45b361d8057b2dfe2,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -141.81755
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: acb33c691afb0ca45b361d8057b2dfe2,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -32.54457
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: acb33c691afb0ca45b361d8057b2dfe2,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.3026058
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: acb33c691afb0ca45b361d8057b2dfe2,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: acb33c691afb0ca45b361d8057b2dfe2,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: acb33c691afb0ca45b361d8057b2dfe2,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.13052624
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: acb33c691afb0ca45b361d8057b2dfe2,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9914449
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: acb33c691afb0ca45b361d8057b2dfe2,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: acb33c691afb0ca45b361d8057b2dfe2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: acb33c691afb0ca45b361d8057b2dfe2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4216859302048453862, guid: acb33c691afb0ca45b361d8057b2dfe2,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -15
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: acb33c691afb0ca45b361d8057b2dfe2,
-        type: 3}
-      propertyPath: m_Name
-      value: FifteenDegreeTilt
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: acb33c691afb0ca45b361d8057b2dfe2, type: 3}
 --- !u!1 &1560176427
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,7 +572,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82999d5b17a0857409df71cfcfcbf708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tourqueForce: 1000
+  forwardForce: 1000
+  horizontalForce: 800
+  downwardForce: 0
+  upwardForce: 0
+  breakForce: 0
+  forwardImpulsePower: 150
+  horizontalImpulsePower: 150
+  downwardImpulsePower: 0
+  upwardImpulsePower: 0
+  forwardImpulseTime: 0.1
+  horizontalImpulseTime: 0.1
 --- !u!135 &2025093608
 SphereCollider:
   m_ObjectHideFlags: 0
