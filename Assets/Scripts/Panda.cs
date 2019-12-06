@@ -14,13 +14,15 @@ public class Panda : MonoBehaviour
     public float forwardImpulsePower;
     public float horizontalImpulsePower, downwardImpulsePower, upwardImpulsePower;
 
-
     [Header("Timers")]
     public float forwardImpulseTime;
-    public float horizontalImpulseTime;
-    private float e_horizontalImpulseTime, e_forwardImpulseTime;
+    public float horizontalImpulseTime, downwardImpulseTime, upwardImpulseTime;
+    private float e_horizontalImpulseTime, e_forwardImpulseTime, e_downwardImpulseTime, e_upwardImpulseTime;
 
-    Rigidbody rb;
+
+    [Header("Other values")]
+    public Rigidbody rb;
+    public int maxJumpCount, currentJumpCount;
 
     void Start()
     {
@@ -29,7 +31,6 @@ public class Panda : MonoBehaviour
 
     void Update()
     {
-
         CoditionExecutionManager();
     }
 
@@ -42,20 +43,23 @@ public class Panda : MonoBehaviour
         TimersCountdown();
         float moveX = Input.GetAxisRaw("Horizontal");
 
+        if (Input.GetButtonDown("Horizontal")) e_horizontalImpulseTime = horizontalImpulseTime;
+        if (Input.GetButtonDown("Vertical")) e_forwardImpulseTime = forwardImpulseTime;
+        if (Input.GetButtonDown("Jump") && currentJumpCount < maxJumpCount)
+        {
+            currentJumpCount++;
+            e_upwardImpulseTime = upwardImpulseTime;
+        }
+
         if(e_forwardImpulseTime <= 0f) ApplyForwardForce();
-        if (e_horizontalImpulseTime <= 0f)  ApplyHorizontalForce(moveX);
-        ApplyDownwardForce();
+        if (e_horizontalImpulseTime <= 0f) ApplyHorizontalForce(moveX);
+        if (e_downwardImpulseTime <= 0f && e_upwardImpulseTime <= 0f) ApplyDownwardForce();
+        if (e_upwardImpulseTime <= 0f) ApplyUpwardForce();
 
         if (e_horizontalImpulseTime > 0f) ApplyHorizontalImpulse(moveX);
         if (e_forwardImpulseTime > 0f) ApplyForwardImpulse();
-
-        if (Input.GetButtonDown("Horizontal")) e_horizontalImpulseTime = horizontalImpulseTime;
-        if (Input.GetButtonDown("Jump")) e_forwardImpulseTime = forwardImpulseTime;
-
-        if (Input.anyKey)
-        {
-            Debug.Log(Input.anyKey);
-        }
+        if (e_downwardImpulseTime > 0f && e_upwardImpulseTime <= 0f) ApplyDownwardImpulse();
+        if (e_upwardImpulseTime > 0f) ApplyUpwardImpulse();
     }
 
 
@@ -63,6 +67,14 @@ public class Panda : MonoBehaviour
     {
         if (e_horizontalImpulseTime > 0f) e_horizontalImpulseTime -= Time.deltaTime;
         if (e_forwardImpulseTime > 0f) e_forwardImpulseTime -= Time.deltaTime;
+        if (e_downwardImpulseTime > 0f) e_downwardImpulseTime -= Time.deltaTime;
+        if (e_upwardImpulseTime > 0f) e_upwardImpulseTime -= Time.deltaTime;
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        currentJumpCount = 0;
     }
 
 
