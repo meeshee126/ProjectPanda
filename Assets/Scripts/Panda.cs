@@ -34,7 +34,7 @@ public class Panda : MonoBehaviour
     /// </summary>
     private void ApplyForwardForce()
     {
-        rb.AddForce(new Vector3(1f, 0f, 0f) * tourqueForce * Time.deltaTime, ForceMode.Force);
+        rb.AddForce(new Vector3(1f, 0f, 0f) * tourqueForce * Time.deltaTime * -1f, ForceMode.Force);
     }
 
     private void PrintDetails()
