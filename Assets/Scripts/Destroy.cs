@@ -42,11 +42,18 @@ public class Destroy : MonoBehaviour
     }
     */
 
-    private void OnCollisionEnter(Collision collision)
+   /* private void OnCollisionEnter(Collision collision)
     {
 
         if(collision.collider.name == "Panda")
         {
+            BoxCollider[] colliders = GetComponents<BoxCollider>();
+
+            foreach (BoxCollider collider in colliders)
+            {
+                collider.enabled = false;
+            }
+
             Rigidbody[] rbs = GetComponentsInChildren<Rigidbody>();
 
             foreach (Rigidbody rb in rbs)
@@ -54,5 +61,26 @@ public class Destroy : MonoBehaviour
                 rb.isKinematic = false;
             }
         }     
+    }
+    */
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "Panda")
+        {
+            BoxCollider[] colliders = GetComponents<BoxCollider>();
+
+            foreach (BoxCollider collider in colliders)
+            {
+                collider.enabled = false;
+            }
+
+            Rigidbody[] rbs = GetComponentsInChildren<Rigidbody>();
+
+            foreach (Rigidbody rb in rbs)
+            {
+                rb.isKinematic = false;
+            }
+        }
     }
 }
