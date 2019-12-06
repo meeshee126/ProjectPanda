@@ -4,7 +4,21 @@ using UnityEngine;
 
 public class Panda : MonoBehaviour
 {
-    public float tourqueForce;
+    [Header("Constant Forces")]
+    public float forwardForce;
+    public float horizontalForce, downwardForce, upwardForce;
+    [Space(10)]
+    public float breakForce;
+
+    [Header("Shortterm Impulses")]
+    public float forwardImpulsePower;
+    public float horizontalImpulsePower, downwardImpulsePower, upwardImpulsePower;
+
+
+    [Header("Timers")]
+    public float forwardImpulseTime;
+    public float horizontalImpulseTime;
+    private float e_horizontalImpulseTime, e_forwardImpulseTime;
 
     Rigidbody rb;
 
@@ -15,28 +29,104 @@ public class Panda : MonoBehaviour
 
     void Update()
     {
-        Movement();
-        ApplyForwardForce();
+
+        CoditionExecutionManager();
     }
 
-    void Movement()
+
+    /// <summary>
+    /// Handles the right call of each force
+    /// </summary>
+    void CoditionExecutionManager()
     {
+        TimersCountdown();
         float moveX = Input.GetAxisRaw("Horizontal");
 
-        rb.AddForce(new Vector3(0f, 0f, moveX) * tourqueForce * Time.deltaTime, ForceMode.Force);
-        //rb.AddTorque(new Vector3(moveX, 0, 0) * tourqueForce * Time.deltaTime, ForceMode.Force);
-     
+        if(e_forwardImpulseTime <= 0f) ApplyForwardForce();
+        if (e_horizontalImpulseTime <= 0f)  ApplyHorizontalForce(moveX);
+        ApplyDownwardForce();
+
+        if (e_horizontalImpulseTime > 0f) ApplyHorizontalImpulse(moveX);
+        if (e_forwardImpulseTime > 0f) ApplyForwardImpulse();
+
+        if (Input.GetButtonDown("Horizontal")) e_horizontalImpulseTime = horizontalImpulseTime;
+        if (Input.GetButtonDown("Jump")) e_forwardImpulseTime = forwardImpulseTime;
+
+        if (Input.anyKey)
+        {
+            Debug.Log(Input.anyKey);
+        }
     }
 
 
+    private void TimersCountdown()
+    {
+        if (e_horizontalImpulseTime > 0f) e_horizontalImpulseTime -= Time.deltaTime;
+        if (e_forwardImpulseTime > 0f) e_forwardImpulseTime -= Time.deltaTime;
+    }
+
+
+    #region Forces USE THE FORCE LUKE!
     /// <summary>
     /// GAS GAS GAS IM GONNA STEP ON THE GASSS
     /// </summary>
     private void ApplyForwardForce()
     {
-        rb.AddForce(new Vector3(1f, 0f, 0f) * tourqueForce * Time.deltaTime * -1f, ForceMode.Force);
+        rb.AddForce(new Vector3(1f, 0f, 0f) * forwardForce * Time.deltaTime * -1f, ForceMode.Force);
     }
 
+
+    void ApplyHorizontalForce(float moveX)
+    {
+        rb.AddForce(new Vector3(0f, 0f, moveX) * horizontalForce * Time.deltaTime, ForceMode.Force);
+        //rb.AddTorque(new Vector3(moveX, 0, 0) * tourqueForce * Time.deltaTime, ForceMode.Force);
+    }
+
+
+    private void ApplyDownwardForce()
+    {
+        rb.AddForce(new Vector3(1f, -1f, 0f) * downwardForce * Time.deltaTime, ForceMode.Force);
+    }
+
+
+    private void ApplyUpwardForce()
+    {
+        rb.AddForce(new Vector3(0f, 1f, 0f) * upwardForce * Time.deltaTime, ForceMode.Force);
+    }
+
+
+    private void BreakPull()
+    {
+        rb.AddForce(new Vector3(0f, 0f, 0f) * breakForce * Time.deltaTime, ForceMode.Force);
+    }
+    #endregion
+
+    #region Impulses DON'T GIVE TO YOUR IMPULSES LUKE!
+    private void ApplyForwardImpulse()
+    {
+        rb.AddForce(new Vector3(1f, 0f, 0f) * forwardImpulsePower * Time.deltaTime * -1f, ForceMode.Impulse);
+    }
+
+    private void ApplyHorizontalImpulse(float moveX)
+    {
+        rb.AddForce(new Vector3(0f, 0f, moveX) * horizontalImpulsePower * Time.deltaTime, ForceMode.Impulse);
+    }
+
+    private void ApplyDownwardImpulse()
+    {
+        rb.AddForce(new Vector3(0f, -1f, 0f) * downwardImpulsePower * Time.deltaTime, ForceMode.Impulse);
+    }
+
+    private void ApplyUpwardImpulse()
+    {
+        rb.AddForce(new Vector3(0f, 1f, 0f) * upwardImpulsePower * Time.deltaTime, ForceMode.Impulse);
+    }
+    #endregion
+
+
+    /// <summary>
+    /// Prints Details About ball status
+    /// </summary>
     private void PrintDetails()
     {
         if (Input.GetKeyDown(KeyCode.Q))
