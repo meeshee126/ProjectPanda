@@ -23,7 +23,7 @@ public class Panda : MonoBehaviour
     {
         float moveX = Input.GetAxisRaw("Horizontal");
 
-        rb.AddForce(new Vector3(moveX, 0, 0) * tourqueForce * Time.deltaTime, ForceMode.Force);
+        rb.AddForce(new Vector3(0f, 0f, moveX) * tourqueForce * Time.deltaTime, ForceMode.Force);
         //rb.AddTorque(new Vector3(moveX, 0, 0) * tourqueForce * Time.deltaTime, ForceMode.Force);
      
     }
@@ -34,7 +34,7 @@ public class Panda : MonoBehaviour
     /// </summary>
     private void ApplyForwardForce()
     {
-        rb.AddForce(new Vector3(0f, 0f, 1f) * tourqueForce * Time.deltaTime, ForceMode.Force);
+        rb.AddForce(new Vector3(1f, 0f, 0f) * tourqueForce * Time.deltaTime, ForceMode.Force);
     }
 
     private void PrintDetails()
