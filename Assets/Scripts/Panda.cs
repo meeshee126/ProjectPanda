@@ -17,6 +17,7 @@ public class Panda : MonoBehaviour
     void Update()
     {
         Movement();
+        ApplyForwardTourque();
     }
 
     void Movement()
@@ -25,5 +26,10 @@ public class Panda : MonoBehaviour
 
         rb.AddTorque(new Vector3(moveX, 0, 0) * tourqueForce * Time.deltaTime, ForceMode.Impulse);
      
+    }
+
+    private void ApplyForwardTourque()
+    {
+        rb.AddTorque(new Vector3(0f, 0f, 1f) * tourqueForce * Time.deltaTime, ForceMode.Force);
     }
 }
