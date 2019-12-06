@@ -21,9 +21,9 @@ public class Panda : MonoBehaviour
 
     void Movement()
     {
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
+        float moveX = Input.GetAxisRaw("Horizontal");
 
-        rb.AddTorque(new Vector3(moveX, 0, moveZ) * tourqueForce * Time.deltaTime);
+        rb.AddTorque(new Vector3(moveX, 0, 0) * tourqueForce * Time.deltaTime, ForceMode.Impulse);
+     
     }
 }
