@@ -94,12 +94,12 @@ public class Panda : MonoBehaviour
 
     private void ForwardForceHandler()
     {
-        if (rb.velocity.x > minVelocityBeforeForceMultiply)
+        if (rb.velocity.x > minVelocityBeforeForceMultiply * -1f)
         {
             e_forwardForce *= 1.01f;
             e_upwardForce *= 1.01f;
         }
-        if (rb.velocity.x < minVelocityBeforeForceMultiply)
+        if (rb.velocity.x < minVelocityBeforeForceMultiply * -1f)
         {
             e_forwardForce = forwardForce;
             e_upwardForce = upwardForce;
