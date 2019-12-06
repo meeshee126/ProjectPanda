@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ramps:
-  - {fileID: 2828231601276689168}
+  - {fileID: 3233143637532089425, guid: 90da7c820c0f00e4b8bc105276cc56b9, type: 3}
   spawnPostion: {x: 0, y: 0, z: 0}
 --- !u!65 &2091050581912114183
 BoxCollider:

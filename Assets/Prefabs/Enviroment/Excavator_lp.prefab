@@ -12,13 +12,14 @@ GameObject:
   - component: {fileID: 2497780803486843082}
   - component: {fileID: 8184569958141033523}
   - component: {fileID: 7613820122742278382}
+  - component: {fileID: 5450759528254386888}
   - component: {fileID: 7613820122742278381}
   - component: {fileID: 7613820122742278380}
   - component: {fileID: 7613820122742278379}
   - component: {fileID: 7613820122742278378}
   - component: {fileID: 7613820122742278377}
   m_Layer: 0
-  m_Name: Excavator_lp (1)
+  m_Name: Excavator_lp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,6 +102,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5450759528254386888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7613820122742278383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d046ce615514a6d4fa103a42858f360f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyed: {fileID: 922133423678429695, guid: 1e74c8e2169b45f448462433c5c3687c,
+    type: 3}
 --- !u!65 &7613820122742278381
 BoxCollider:
   m_ObjectHideFlags: 0
