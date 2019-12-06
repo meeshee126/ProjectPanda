@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Panda : MonoBehaviour
 {
-    [SerializeField]
-    float tourqueForce;
+    public float tourqueForce;
 
     Rigidbody rb;
 
@@ -17,19 +16,32 @@ public class Panda : MonoBehaviour
     void Update()
     {
         Movement();
-        ApplyForwardTourque();
+        ApplyForwardForce();
     }
 
     void Movement()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
 
-        rb.AddTorque(new Vector3(moveX, 0, 0) * tourqueForce * Time.deltaTime, ForceMode.Impulse);
+        rb.AddForce(new Vector3(moveX, 0, 0) * tourqueForce * Time.deltaTime, ForceMode.Force);
+        //rb.AddTorque(new Vector3(moveX, 0, 0) * tourqueForce * Time.deltaTime, ForceMode.Force);
      
     }
 
-    private void ApplyForwardTourque()
+
+    /// <summary>
+    /// GAS GAS GAS IM GONNA STEP ON THE GASSS
+    /// </summary>
+    private void ApplyForwardForce()
     {
-        rb.AddTorque(new Vector3(0f, 0f, 1f) * tourqueForce * Time.deltaTime, ForceMode.Force);
+        rb.AddForce(new Vector3(0f, 0f, 1f) * tourqueForce * Time.deltaTime, ForceMode.Force);
+    }
+
+    private void PrintDetails()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Debug.Log(rb.GetPointVelocity(transform.position));
+        }
     }
 }
