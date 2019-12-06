@@ -11,6 +11,8 @@ public class MapGenerator : MonoBehaviour
 
     public Vector3 spawnPostion;
 
+    GameObject ramp;
+
     void Start()
     {
         mesh = GetComponent<MeshFilter>().sharedMesh;
@@ -26,14 +28,14 @@ public class MapGenerator : MonoBehaviour
         if (other.name == "Panda" && this.gameObject.name == "TutorialTerrain")
         {
             spawnPostion = new Vector3(-141.8f, 4.48f, 0);
-            Instantiate(ramps[Random.Range(0, ramps.Count)], this.transform.position + spawnPostion, Quaternion.Euler(0f,0, -15f));
+            ramp = Instantiate(ramps[Random.Range(0, ramps.Count)], this.transform.position + spawnPostion, Quaternion.Euler(0f,0, -15f));
             Destroy(this);
         }
 
-        if (other.name == "Panda")
+        else if (other.name == "Panda")
         {
-            spawnPostion = new Vector3(-141.8f, 4.48f, 0);
-            Instantiate(ramps[Random.Range(0, ramps.Count)], this.transform.position + spawnPostion, Quaternion.Euler(0f, 0, -15f));
+            spawnPostion = new Vector3(-127.74f, 0, 0);
+            ramp = Instantiate(ramps[Random.Range(0, ramps.Count)], this.transform.position + spawnPostion, Quaternion.Euler(0f, 0, -15f));
             Destroy(this);
         }
     }
