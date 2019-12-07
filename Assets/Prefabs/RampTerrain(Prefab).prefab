@@ -288,10 +288,10 @@ MonoBehaviour:
   radius: 70.49
   mask:
     serializedVersion: 2
-    m_Bits: 512
-  spacing: 8
-  spawnMin: 20
-  spawnMax: 20
+    m_Bits: 2048
+  spacing: 3
+  spawnMin: 50
+  spawnMax: 50
   colliders: []
 --- !u!1001 &5911222356814923880
 PrefabInstance:
