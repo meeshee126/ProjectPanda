@@ -1,19 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.Linq;
 
 public class ObjectManager : MonoBehaviour
 {
     Rigidbody rb;
+
+    public int points;
+
     public BoxCollider boxCollider;
     
     public float speed;
     bool hitted;
 
+    bool pointsGetted;
+
     private void Start()
     {
-       
         rb = GetComponent<Rigidbody>();
     }
 
@@ -66,8 +71,12 @@ public class ObjectManager : MonoBehaviour
             {
                 foreach (BoxCollider collider in colliders)
                 {
+                   
+                    
                     collider.enabled = false;
                 }
+                Score score = GameObject.Find("GameManager").GetComponent<Score>();
+                score.points += points;
             }
 
               
