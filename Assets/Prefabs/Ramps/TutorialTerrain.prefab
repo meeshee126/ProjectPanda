@@ -130,9 +130,10 @@ GameObject:
   - component: {fileID: 1465733338304560862}
   - component: {fileID: 3318056096738098523}
   - component: {fileID: 7952687142776753961}
+  - component: {fileID: 1073021885098377648}
   m_Layer: 8
   m_Name: TutorialTerrain
-  m_TagString: Untagged
+  m_TagString: Ramp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -242,3 +243,25 @@ MonoBehaviour:
   - {fileID: 3233143637532089425, guid: 90da7c820c0f00e4b8bc105276cc56b9, type: 3}
   - {fileID: 7873147079646061980, guid: 78a096e3b0d2425489f15d550278e418, type: 3}
   spawnPostion: {x: 0, y: 0, z: 0}
+--- !u!114 &1073021885098377648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7455350341042075740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89590ebb300c8fe42aadfb402ae6dc2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
+  radius: 0
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
+  spacing: 0
+  spawnMin: 0
+  spawnMax: 0
+  spawnObject: {fileID: 0}
+  colliders: []
