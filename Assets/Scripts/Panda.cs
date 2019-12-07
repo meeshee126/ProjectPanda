@@ -7,11 +7,9 @@ public class Panda : MonoBehaviour
 {
     [Header("Constant Forces")]
     public float forwardForce;
-    public float e_forwardForce;
+    private float e_forwardForce;
     public float horizontalForce, downwardForce, upwardForce;
-    public float e_horizontalForce, e_downwardForce, e_upwardForce;
-    [Space(10)]
-    public float breakForce;
+    private float e_horizontalForce, e_downwardForce, e_upwardForce;
 
     [Header("Shortterm Impulses")]
     public float forwardImpulsePower;
@@ -21,8 +19,10 @@ public class Panda : MonoBehaviour
     public float forwardImpulseTime;
     public float horizontalImpulseTime, downwardImpulseTime, upwardImpulseTime;
     private float e_horizontalImpulseTime, e_forwardImpulseTime, e_downwardImpulseTime, e_upwardImpulseTime;
-    public float jumpAirTime, defaultAirTime, e_AirTime;
-    public float dashRegenCooldown, e_dashRegenCooldown;
+    public float jumpAirTime, defaultAirTime;
+    private float e_AirTime;
+    public float dashRegenCooldown;
+    private float e_dashRegenCooldown;
 
     [Header("Other values")]
     public Rigidbody rb;
