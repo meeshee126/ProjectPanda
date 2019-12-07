@@ -10,12 +10,16 @@ public class ObjectGenerator : MonoBehaviour
     public float spacing;
     public int spawnMin;
     public int spawnMax;
-    public List<GameObject> objects = new List<GameObject>();
+    List<GameObject> objects;
     public Collider[] colliders;
+
+    ObjectList objectList;
 
 
     private void Start()
     {
+        objectList = GameObject.Find("GameManager").GetComponent<ObjectList>();
+        objects = objectList.objects;
         SpawnObject();
     }
 
@@ -43,7 +47,7 @@ public class ObjectGenerator : MonoBehaviour
 
                 if (canSpawnHere)
                 {
-                    GameObject newObject = Instantiate(objects[Random.Range(0, objects.Count)], spawnPosition, Quaternion.identity, transform) as GameObject;
+                    GameObject newObject = Instantiate(objects[Random.Range(0, objects.Count)], spawnPosition, Quaternion.identity, GameObject.Find("Objects").transform) as GameObject;
                     break;
                 }
                 catcher++;

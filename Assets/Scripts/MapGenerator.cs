@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    [SerializeField]
-    List<GameObject> ramps = new List<GameObject>();
+    RampList rampList;
+
+    List<GameObject> ramps;
 
     Mesh mesh;
 
@@ -15,6 +16,8 @@ public class MapGenerator : MonoBehaviour
 
     void Start()
     {
+        rampList = GameObject.Find("GameManager").GetComponent<RampList>();
+        ramps = rampList.ramps;
         mesh = GetComponent<MeshFilter>().sharedMesh;
     }
 
