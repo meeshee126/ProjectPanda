@@ -21,11 +21,13 @@ public class Panda : MonoBehaviour
     public float forwardImpulseTime;
     public float horizontalImpulseTime, downwardImpulseTime, upwardImpulseTime;
     private float e_horizontalImpulseTime, e_forwardImpulseTime, e_downwardImpulseTime, e_upwardImpulseTime;
+    public float airTime, e_AirTime;
 
     [Header("Other values")]
     public Rigidbody rb;
     public int maxJumpCount, currentJumpCount;
-    public float minVelocityBeforeForceMultiply;
+    public float minVelocityBeforeForceMultiply, FallAfterJumpSpeed;
+    public RaycastHit groundCheck;
 
 
     void Start()
@@ -38,6 +40,7 @@ public class Panda : MonoBehaviour
     void Update()
     {
         PrintDetails();
+        TimersCountdown();
         CoditionExecutionManager();
     }
 
@@ -47,8 +50,22 @@ public class Panda : MonoBehaviour
     /// </summary>
     void CoditionExecutionManager()
     {
-        TimersCountdown();
         float moveX = Input.GetAxisRaw("Horizontal");
+
+        // If it doesn't touch the ground
+        if (!Physics.Raycast(transform.position, new Vector3(0f, -1f, 0f), out groundCheck, 1.5f, LayerMask.NameToLayer("Ground")))
+        {
+            Debug.DrawRay(transform.position, new Vector3(0f, -1f, 0f) * groundCheck.distance, Color.red);
+
+            // Count Down before quick fall
+            if (isTimeToFall()) rb.AddForce(new Vector3(0f, -1f, 0f) *
+            (downwardForce / FallAfterJumpSpeed) * Time.deltaTime, ForceMode.Impulse);
+        }
+
+        if (Physics.Raycast(transform.position, new Vector3(0f, -1f, 0f), out groundCheck, 1.5f, LayerMask.NameToLayer("Ground")))
+        {
+            Debug.Log("Test");
+        }
 
         if (Input.GetButton("Vertical") && Input.GetAxisRaw("Vertical") < 0f) return;
         else
@@ -59,21 +76,33 @@ public class Panda : MonoBehaviour
             if (Input.GetButtonDown("Jump") && currentJumpCount < maxJumpCount)
             {
                 currentJumpCount++;
+                e_AirTime = airTime;
                 e_upwardImpulseTime = upwardImpulseTime;
             }
 
             ForwardForceHandler();
 
+            if (e_horizontalImpulseTime > 0f) ApplyHorizontalImpulse(moveX);
+            if (e_forwardImpulseTime > 0f) ApplyForwardImpulse();
+            if (e_downwardImpulseTime > 0f) ApplyDownwardImpulse();
+            if (e_upwardImpulseTime > 0f) ApplyUpwardImpulse();
+
             if (e_forwardImpulseTime <= 0f) ApplyForwardForce();
             if (e_horizontalImpulseTime <= 0f) ApplyHorizontalForce(moveX);
             if (e_downwardImpulseTime <= 0f && e_upwardImpulseTime <= 0f) ApplyDownwardForce();
             if (e_upwardImpulseTime <= 0f) ApplyUpwardForce();
-
-            if (e_horizontalImpulseTime > 0f) ApplyHorizontalImpulse(moveX);
-            if (e_forwardImpulseTime > 0f) ApplyForwardImpulse();
-            if (e_downwardImpulseTime > 0f && e_upwardImpulseTime <= 0f) ApplyDownwardImpulse();
-            if (e_upwardImpulseTime > 0f) ApplyUpwardImpulse();
         }
+    }
+
+
+    private bool isTimeToFall()
+    {
+        if (e_AirTime <= 0f)
+        {
+            return true;
+        }
+        if (e_AirTime > 0f) e_AirTime -= Time.deltaTime;
+        return false;
     }
 
 
@@ -92,12 +121,22 @@ public class Panda : MonoBehaviour
     }
 
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Roof")
+        {
+            e_downwardImpulseTime = downwardImpulseTime;
+            Debug.Log("SLAM DUNK!");
+        }
+    }
+
+
     private void ForwardForceHandler()
     {
         if (rb.velocity.x > minVelocityBeforeForceMultiply * -1f)
         {
             e_forwardForce *= 1.01f;
-            e_upwardForce *= 1.01f;
+            e_upwardForce *= 1.015f;
         }
         if (rb.velocity.x < minVelocityBeforeForceMultiply * -1f)
         {
@@ -108,9 +147,6 @@ public class Panda : MonoBehaviour
 
 
     #region Forces USE THE FORCE LUKE!
-    /// <summary>
-    /// GAS GAS GAS IM GONNA STEP ON THE GASSS
-    /// </summary>
     private void ApplyForwardForce()
     {
         if (e_forwardForce == forwardForce)
@@ -132,19 +168,14 @@ public class Panda : MonoBehaviour
 
     private void ApplyDownwardForce()
     {
-        rb.AddForce(new Vector3(1f, -1f, 0f) * downwardForce * Time.deltaTime, ForceMode.Force);
+        if (currentJumpCount < 0)
+            rb.AddForce(new Vector3(0f, -1f, 0f) * downwardForce * Time.deltaTime, ForceMode.Force);
     }
 
 
     private void ApplyUpwardForce()
     {
         rb.AddForce(new Vector3(0f, 1f, 0f) * upwardForce * Time.deltaTime, ForceMode.Force);
-    }
-
-
-    private void BreakPull()
-    {
-        rb.AddForce(new Vector3(0f, 0f, 0f) * breakForce * Time.deltaTime, ForceMode.Force);
     }
     #endregion
 
