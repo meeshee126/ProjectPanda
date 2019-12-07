@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: a92160406d391ff42af33975a3d4812d, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.36660638, g: 0.64145726, b: 0.8760688, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -267,10 +267,6 @@ MonoBehaviour:
   spacing: 0
   spawnMin: 30
   spawnMax: 30
-  objects:
-  - {fileID: 8649624204506131967, guid: 7dd31ac0ef0ad824e9f6be36ed5b1cb1, type: 3}
-  - {fileID: 444154358930885098, guid: 205d39c6db84c6141a7da0126a7017f6, type: 3}
-  - {fileID: 3900886761798583787, guid: be8202516b30c65448da49e016be0abf, type: 3}
   colliders: []
 --- !u!4 &526108169
 Transform:
