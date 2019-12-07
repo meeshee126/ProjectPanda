@@ -48,9 +48,9 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 512
-  spacing: 2
-  spawnMin: 30
-  spawnMax: 30
+  spacing: 8
+  spawnMin: 20
+  spawnMax: 20
   colliders: []
 --- !u!1 &2197851671325931603
 GameObject:
