@@ -107,7 +107,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.6925428, y: 94.28245, z: 113.38355}
-  m_Center: {x: 0, y: 46.294918, z: -4.67749}
+  m_Center: {x: 16.91, y: 46.294918, z: -4.67749}
 --- !u!114 &7952687142776753961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,4 +122,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ramps:
   - {fileID: 3233143637532089425, guid: 90da7c820c0f00e4b8bc105276cc56b9, type: 3}
+  - {fileID: 7873147079646061980, guid: 78a096e3b0d2425489f15d550278e418, type: 3}
   spawnPostion: {x: 0, y: 0, z: 0}

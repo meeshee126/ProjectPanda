@@ -110,6 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ramps:
   - {fileID: 3233143637532089425}
+  - {fileID: 7873147079646061980, guid: 78a096e3b0d2425489f15d550278e418, type: 3}
   spawnPostion: {x: 0, y: 0, z: 0}
 --- !u!65 &6295168986083122185
 BoxCollider:
@@ -122,5 +123,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6925428, y: 5084.4204, z: 5225.023}
-  m_Center: {x: -0.00074284023, y: 1011.07654, z: 30.897331}
+  m_Size: {x: 354.52158, y: 5084.4204, z: 5225.023}
+  m_Center: {x: 2707.7, y: 1607, z: 30.897331}
