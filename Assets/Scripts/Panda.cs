@@ -93,6 +93,11 @@ public class Panda : MonoBehaviour
                 e_upwardImpulseTime = upwardImpulseTime;
             }
 
+            if (current_JumpCount == 2 && e_AirTime <= 0f)
+            {
+                e_downwardImpulseTime = downwardImpulseTime;
+            }
+
             ForwardForceHandler();
 
             // Impulses
