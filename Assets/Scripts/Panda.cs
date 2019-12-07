@@ -21,13 +21,16 @@ public class Panda : MonoBehaviour
     public float forwardImpulseTime;
     public float horizontalImpulseTime, downwardImpulseTime, upwardImpulseTime;
     private float e_horizontalImpulseTime, e_forwardImpulseTime, e_downwardImpulseTime, e_upwardImpulseTime;
-    public float airTime, e_AirTime;
+    public float jumpAirTime, defaultAirTime, e_AirTime;
+    public float dashRegenCooldown, e_dashRegenCooldown;
 
     [Header("Other values")]
     public Rigidbody rb;
-    public int maxJumpCount, currentJumpCount;
+    public int max_JumpCount, current_JumpCount, max_DashCount, current_DashCount;
     public float minVelocityBeforeForceMultiply, FallAfterJumpSpeed;
-    public RaycastHit groundCheck;
+    public LayerMask layerMask;
+    public RaycastHit[] hits;
+    public float rayViewDistance;
 
 
     void Start()
@@ -39,6 +42,7 @@ public class Panda : MonoBehaviour
 
     void Update()
     {
+        DashRegen();
         PrintDetails();
         TimersCountdown();
         CoditionExecutionManager();
@@ -51,42 +55,53 @@ public class Panda : MonoBehaviour
     void CoditionExecutionManager()
     {
         float moveX = Input.GetAxisRaw("Horizontal");
-
-        // If it doesn't touch the ground
-        if (!Physics.Raycast(transform.position, new Vector3(0f, -1f, 0f), out groundCheck, 1.5f, LayerMask.NameToLayer("Ground")))
+        hits = Physics.RaycastAll(transform.position, new Vector3(0f, -1f, 0f), rayViewDistance, layerMask);
+        for (int i = 0; i < hits.Length; i++)
         {
-            Debug.DrawRay(transform.position, new Vector3(0f, -1f, 0f) * groundCheck.distance, Color.red);
+            e_AirTime = defaultAirTime;
+            Debug.Log("I am touching the ground");
+        }
 
-            // Count Down before quick fall
-            if (isTimeToFall()) rb.AddForce(new Vector3(0f, -1f, 0f) *
+        // Count Down before quick fall
+        if (isTimeToFall()) rb.AddForce(new Vector3(0f, -1f, 0f) *
             (downwardForce / FallAfterJumpSpeed) * Time.deltaTime, ForceMode.Impulse);
-        }
 
-        if (Physics.Raycast(transform.position, new Vector3(0f, -1f, 0f), out groundCheck, 1.5f, LayerMask.NameToLayer("Ground")))
-        {
-            Debug.Log("Test");
-        }
-
+        // Press Down == Break Movement
         if (Input.GetButton("Vertical") && Input.GetAxisRaw("Vertical") < 0f) return;
         else
         {
-            if (Input.GetButtonDown("Horizontal")) e_horizontalImpulseTime = horizontalImpulseTime;
-            if (Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") > 0f) e_forwardImpulseTime = forwardImpulseTime;
-            //if (Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") < 0f) e_downwardImpulseTime = downwardImpulseTime;
-            if (Input.GetButtonDown("Jump") && currentJumpCount < maxJumpCount)
+            if (current_DashCount > 0)
             {
-                currentJumpCount++;
-                e_AirTime = airTime;
+                // Press Left or Right == (short-term Side Dash, Movetowards Side)
+                if (Input.GetButtonDown("Horizontal"))
+                {
+                    current_DashCount--;
+                    e_horizontalImpulseTime = horizontalImpulseTime;
+                }
+                // Press Up == short-term Forward Dash)
+                if (Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") > 0f)
+                {
+                    current_DashCount--;
+                    e_forwardImpulseTime = forwardImpulseTime;
+                }
+            }
+            // Press Jump Button == Leaps Upwards
+            if (Input.GetButtonDown("Jump") && current_JumpCount < max_JumpCount)
+            {
+                current_JumpCount++;
+                e_AirTime = jumpAirTime;
                 e_upwardImpulseTime = upwardImpulseTime;
             }
 
             ForwardForceHandler();
 
+            // Impulses
             if (e_horizontalImpulseTime > 0f) ApplyHorizontalImpulse(moveX);
             if (e_forwardImpulseTime > 0f) ApplyForwardImpulse();
             if (e_downwardImpulseTime > 0f) ApplyDownwardImpulse();
             if (e_upwardImpulseTime > 0f) ApplyUpwardImpulse();
 
+            // Forces
             if (e_forwardImpulseTime <= 0f) ApplyForwardForce();
             if (e_horizontalImpulseTime <= 0f) ApplyHorizontalForce(moveX);
             if (e_downwardImpulseTime <= 0f && e_upwardImpulseTime <= 0f) ApplyDownwardForce();
@@ -106,6 +121,25 @@ public class Panda : MonoBehaviour
     }
 
 
+    private void DashRegen()
+    {
+        if (current_DashCount < max_DashCount)
+        {
+            if (e_dashRegenCooldown <= 0f)
+            {
+                e_dashRegenCooldown = dashRegenCooldown;
+                current_DashCount++;
+            }
+
+            if (e_dashRegenCooldown > 0f)
+            {
+
+                e_dashRegenCooldown -= Time.deltaTime;
+            }
+        }
+    }
+    
+
     private void TimersCountdown()
     {
         if (e_horizontalImpulseTime > 0f) e_horizontalImpulseTime -= Time.deltaTime;
@@ -117,7 +151,7 @@ public class Panda : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        currentJumpCount = 0;
+        current_JumpCount = 0;
     }
 
 
@@ -168,7 +202,7 @@ public class Panda : MonoBehaviour
 
     private void ApplyDownwardForce()
     {
-        if (currentJumpCount < 0)
+        if (current_JumpCount < 0)
             rb.AddForce(new Vector3(0f, -1f, 0f) * downwardForce * Time.deltaTime, ForceMode.Force);
     }
 
@@ -208,6 +242,7 @@ public class Panda : MonoBehaviour
         e_horizontalForce = horizontalForce;
         e_downwardForce = downwardForce;
         e_upwardForce = upwardForce;
+        current_DashCount = max_DashCount;
     }
 
 

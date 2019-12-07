@@ -810,7 +810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82999d5b17a0857409df71cfcfcbf708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardForce: 800
+  forwardForce: 1000
   e_forwardForce: 0
   horizontalForce: 800
   downwardForce: 200
@@ -822,18 +822,27 @@ MonoBehaviour:
   forwardImpulsePower: 100
   horizontalImpulsePower: 150
   downwardImpulsePower: 500
-  upwardImpulsePower: 100
+  upwardImpulsePower: 80
   forwardImpulseTime: 0.1
   horizontalImpulseTime: 0.1
   downwardImpulseTime: 0.3
   upwardImpulseTime: 0.2
-  airTime: 1
+  jumpAirTime: 1.5
+  defaultAirTime: 0.5
   e_AirTime: 0
+  dashRegenCooldown: 0.5
+  e_dashRegenCooldown: 0
   rb: {fileID: 0}
-  maxJumpCount: 2
-  currentJumpCount: 0
+  max_JumpCount: 2
+  current_JumpCount: 0
+  max_DashCount: 2
+  current_DashCount: 0
   minVelocityBeforeForceMultiply: 7
   FallAfterJumpSpeed: 4
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  rayViewDistance: 3
 --- !u!135 &2025093608
 SphereCollider:
   m_ObjectHideFlags: 0

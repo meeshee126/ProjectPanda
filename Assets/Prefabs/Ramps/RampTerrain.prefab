@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1708688269011803367}
   - component: {fileID: 6529886308776136361}
   - component: {fileID: 7353451438591732061}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Walls
   m_TagString: Walls
   m_Icon: {fileID: 0}
@@ -68,7 +68,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2735352644664191966}
   - component: {fileID: 6885266106959823087}
-  m_Layer: 8
+  - component: {fileID: 2924350456243428036}
+  m_Layer: 0
   m_Name: Roof
   m_TagString: Roof
   m_Icon: {fileID: 0}
@@ -102,6 +103,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 13723.616, y: 100, z: 4400}
   m_Center: {x: 151.60017, y: 5500, z: 0}
+--- !u!65 &2924350456243428036
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3054212712252969252}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13723.616, y: 100, z: 4400}
+  m_Center: {x: 151.60017, y: 5555, z: 0}
 --- !u!1 &3233143637532089425
 GameObject:
   m_ObjectHideFlags: 0
