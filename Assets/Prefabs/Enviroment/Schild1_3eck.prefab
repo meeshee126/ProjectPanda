@@ -119,7 +119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1610569613173125149}
   - component: {fileID: 5990720205125889735}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Schild1_3eck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

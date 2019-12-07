@@ -71,7 +71,6 @@ GameObject:
   - component: {fileID: 4679357472098091248}
   - component: {fileID: 4905014039413066575}
   - component: {fileID: 1233199745102432755}
-  - component: {fileID: 661444165237155385}
   - component: {fileID: 7652825378693280132}
   m_Layer: 9
   m_Name: CliffTerrain(Prefab)
@@ -172,19 +171,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1090.0088, y: 9295.848, z: 9745.956}
   m_Center: {x: 1340.92, y: 2430.1313, z: -827.3487}
---- !u!114 &661444165237155385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6398696809319380012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca2dddc7d3cc7f42b94dfba56dbd0b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPostion: {x: 0, y: 0, z: 0}
 --- !u!114 &7652825378693280132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +221,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7789188459446354992}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89590ebb300c8fe42aadfb402ae6dc2f, type: 3}
   m_Name: 

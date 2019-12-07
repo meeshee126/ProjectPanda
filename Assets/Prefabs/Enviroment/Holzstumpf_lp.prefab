@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7300090615929309633}
   - component: {fileID: 1031916565110219801}
   - component: {fileID: 1031916565110219798}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Holzstumpf_lp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

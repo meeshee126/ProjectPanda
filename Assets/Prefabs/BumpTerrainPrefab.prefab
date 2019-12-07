@@ -96,7 +96,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 646531502639130118}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89590ebb300c8fe42aadfb402ae6dc2f, type: 3}
   m_Name: 
@@ -182,7 +182,6 @@ GameObject:
   - component: {fileID: 3393617587429415628}
   - component: {fileID: 4110997174222835906}
   - component: {fileID: 2869575565215535199}
-  - component: {fileID: 947280050264483288}
   m_Layer: 9
   m_Name: BumpTerrainPrefab
   m_TagString: Ramp
@@ -293,16 +292,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1195.9767, y: 9663.45, z: 7848.7656}
   m_Center: {x: 604.7701, y: 2461.6833, z: 137.05864}
---- !u!114 &947280050264483288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5169191138050781184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca2dddc7d3cc7f42b94dfba56dbd0b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPostion: {x: 0, y: 0, z: 0}

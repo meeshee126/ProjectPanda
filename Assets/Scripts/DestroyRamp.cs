@@ -16,7 +16,7 @@ public class DestroyRamp : MonoBehaviour
         if (panda == null)
             return;
 
-        if(Vector3.Distance(this.transform.position, panda.transform.position) > 220)
+        if(Vector3.Distance(this.transform.position, panda.transform.position) > 400)
         {
             Destroy(this.gameObject);
         }

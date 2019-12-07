@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 632269586318536564}
   - component: {fileID: 2655226941675573146}
   - component: {fileID: 6939111867151698732}
-  - component: {fileID: 2605399702301956576}
   - component: {fileID: 4158958672666368190}
   m_Layer: 9
   m_Name: RampTerrain(Prefab)
@@ -114,19 +113,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1154.0219, y: 9880.393, z: 9025.691}
   m_Center: {x: -2478.283, y: 2832.503, z: 792.4751}
---- !u!114 &2605399702301956576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1223452813487414184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca2dddc7d3cc7f42b94dfba56dbd0b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPostion: {x: 0, y: 0, z: 0}
 --- !u!114 &4158958672666368190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,7 +279,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6524234356938267176}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89590ebb300c8fe42aadfb402ae6dc2f, type: 3}
   m_Name: 
