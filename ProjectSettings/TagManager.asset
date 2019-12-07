@@ -8,6 +8,7 @@ TagManager:
   - Roof
   - Walls
   - Ramp
+  - Object
   layers:
   - Default
   - TransparentFX

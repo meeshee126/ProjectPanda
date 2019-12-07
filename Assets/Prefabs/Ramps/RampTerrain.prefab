@@ -130,7 +130,6 @@ GameObject:
   - component: {fileID: 7342974310136033645}
   - component: {fileID: 159521596703524208}
   - component: {fileID: 6295168986083122185}
-  - component: {fileID: 7939288587042482698}
   m_Layer: 8
   m_Name: RampTerrain
   m_TagString: Ramp
@@ -151,6 +150,7 @@ Transform:
   m_Children:
   - {fileID: 1708688269011803367}
   - {fileID: 2735352644664191966}
+  - {fileID: 5403174003139680088}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -227,9 +227,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca2dddc7d3cc7f42b94dfba56dbd0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ramps:
-  - {fileID: 3233143637532089425}
-  - {fileID: 7873147079646061980, guid: 78a096e3b0d2425489f15d550278e418, type: 3}
   spawnPostion: {x: 0, y: 0, z: 0}
 --- !u!65 &6295168986083122185
 BoxCollider:
@@ -244,25 +241,55 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 354.52155, y: 7719.6963, z: 5225.023}
   m_Center: {x: 2707.7122, y: 2924.636, z: 30.897331}
---- !u!114 &7939288587042482698
+--- !u!1 &8868795797450994549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5403174003139680088}
+  - component: {fileID: 3881902815330883422}
+  m_Layer: 0
+  m_Name: spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5403174003139680088
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8868795797450994549}
+  m_LocalRotation: {x: -0, y: -0, z: 0.13052619, w: 0.9914449}
+  m_LocalPosition: {x: -183, y: 682, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_Children: []
+  m_Father: {fileID: 1910993930199821890}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3881902815330883422
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3233143637532089425}
+  m_GameObject: {fileID: 8868795797450994549}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89590ebb300c8fe42aadfb402ae6dc2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0, z: 0}
-  radius: 0
+  offset: {x: -123.3, y: 0, z: 21.8}
+  radius: 70.49
   mask:
     serializedVersion: 2
-    m_Bits: 0
-  spacing: 0
-  spawnMin: 0
-  spawnMax: 0
-  spawnObject: {fileID: 0}
+    m_Bits: 512
+  spacing: 2
+  spawnMin: 30
+  spawnMax: 30
   colliders: []

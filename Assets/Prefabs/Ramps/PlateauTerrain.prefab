@@ -83,7 +83,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7224274662879017527}
   m_LocalRotation: {x: -0, y: 0, z: 0.13052619, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -312, y: 1163, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 6564084790631585679}
@@ -101,18 +101,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89590ebb300c8fe42aadfb402ae6dc2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: -123.3, y: 6.6, z: 21.8}
+  offset: {x: -123.3, y: 0, z: 21.8}
   radius: 70.49
   mask:
     serializedVersion: 2
     m_Bits: 512
-  spacing: 0
+  spacing: 2
   spawnMin: 30
   spawnMax: 30
-  objects:
-  - {fileID: 8649624204506131967, guid: 7dd31ac0ef0ad824e9f6be36ed5b1cb1, type: 3}
-  - {fileID: 444154358930885098, guid: 205d39c6db84c6141a7da0126a7017f6, type: 3}
-  - {fileID: 3900886761798583787, guid: be8202516b30c65448da49e016be0abf, type: 3}
   colliders: []
 --- !u!1 &7873147079646061980
 GameObject:
@@ -238,9 +234,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca2dddc7d3cc7f42b94dfba56dbd0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ramps:
-  - {fileID: 7873147079646061980}
-  - {fileID: 3233143637532089425, guid: 90da7c820c0f00e4b8bc105276cc56b9, type: 3}
   spawnPostion: {x: 0, y: 0, z: 0}
 --- !u!1 &8786483255337928834
 GameObject:
