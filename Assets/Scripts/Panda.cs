@@ -14,6 +14,11 @@ public class Panda : MonoBehaviour
     [Header("Shortterm Impulses")]
     public float forwardImpulsePower;
     public float horizontalImpulsePower, downwardImpulsePower, upwardImpulsePower;
+    public float small_ExplosionPower, normal_ExplosionPower, big_ExplosionPower;
+
+    [Header("Radiuses")]
+    public float small_ExplosionRadius;
+    public float normal_ExplosionRadius, big_ExplosionRadius;
 
     [Header("Timers")]
     public float forwardImpulseTime;
@@ -31,6 +36,7 @@ public class Panda : MonoBehaviour
     public LayerMask layerMask;
     public RaycastHit[] hits;
     public float rayViewDistance;
+    public bool land;
 
 
     void Start()
@@ -47,6 +53,54 @@ public class Panda : MonoBehaviour
         TimersCountdown();
         CoditionExecutionManager();
     }
+
+    #region Explosions (From Smacking On The Ground)
+    public void Small_Explosion()
+    {
+        // add all colliders which got a rigibody in this list
+        Collider[] colliders = Physics.OverlapSphere(this.transform.position, small_ExplosionRadius);
+        foreach (Collider hit in colliders)
+        {
+            if (hit.gameObject != this.gameObject)
+            {
+                Rigidbody rb = hit.GetComponent<Rigidbody>();
+                // all objects with a rigibody in the colliders list get an explosion impuls in his direction
+                if (rb != null)
+                    rb.AddExplosionForce(small_ExplosionPower, this.transform.position, small_ExplosionRadius, small_ExplosionPower, ForceMode.Impulse);
+            }
+        }
+    }
+
+
+    public void Normal_Explosion()
+    {
+        Collider[] colliders = Physics.OverlapSphere(this.transform.position, normal_ExplosionRadius);
+        foreach (Collider hit in colliders)
+        {
+            if (hit.gameObject != this.gameObject)
+            {
+                Rigidbody rb = hit.GetComponent<Rigidbody>();
+                if (rb != null)
+                    rb.AddExplosionForce(normal_ExplosionPower, this.transform.position, normal_ExplosionRadius, normal_ExplosionPower, ForceMode.Impulse);
+            }
+        }
+    }
+
+
+    public void Big_Explosion()
+    {
+        Collider[] colliders = Physics.OverlapSphere(this.transform.position, big_ExplosionRadius);
+        foreach (Collider hit in colliders)
+        {
+            if (hit.gameObject != this.gameObject)
+            {
+                Rigidbody rb = hit.GetComponent<Rigidbody>();
+                if (rb != null)
+                    rb.AddExplosionForce(big_ExplosionPower, this.transform.position, big_ExplosionPower, big_ExplosionRadius, ForceMode.Impulse);
+            }
+        }
+    }
+    #endregion
 
 
     /// <summary>
@@ -156,6 +210,10 @@ public class Panda : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (current_JumpCount == 1) Small_Explosion();
+        if (current_JumpCount == 2) Normal_Explosion();
+        if (current_JumpCount == 3) Big_Explosion();
+
         current_JumpCount = 0;
     }
 
@@ -164,6 +222,7 @@ public class Panda : MonoBehaviour
     {
         if (other.tag == "Roof")
         {
+            current_JumpCount = 3;
             e_downwardImpulseTime = downwardImpulseTime;
             Debug.Log("SLAM DUNK!");
         }
