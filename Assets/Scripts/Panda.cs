@@ -14,11 +14,6 @@ public class Panda : MonoBehaviour
     [Header("Shortterm Impulses")]
     public float forwardImpulsePower;
     public float horizontalImpulsePower, downwardImpulsePower, upwardImpulsePower;
-    public float small_ExplosionPower, normal_ExplosionPower, big_ExplosionPower;
-
-    [Header("Radiuses")]
-    public float small_ExplosionRadius;
-    public float normal_ExplosionRadius, big_ExplosionRadius;
 
     [Header("Timers")]
     public float forwardImpulseTime;
@@ -37,6 +32,7 @@ public class Panda : MonoBehaviour
     public RaycastHit[] hits;
     public float rayViewDistance;
     public bool land;
+    public GameObject explodingForce;
 
 
     void Start()
@@ -53,54 +49,6 @@ public class Panda : MonoBehaviour
         TimersCountdown();
         CoditionExecutionManager();
     }
-
-    #region Explosions (From Smacking On The Ground)
-    public void Small_Explosion()
-    {
-        // add all colliders which got a rigibody in this list
-        Collider[] colliders = Physics.OverlapSphere(this.transform.position, small_ExplosionRadius);
-        foreach (Collider hit in colliders)
-        {
-            if (hit.gameObject != this.gameObject)
-            {
-                Rigidbody rb = hit.GetComponent<Rigidbody>();
-                // all objects with a rigibody in the colliders list get an explosion impuls in his direction
-                if (rb != null)
-                    rb.AddExplosionForce(small_ExplosionPower, this.transform.position, small_ExplosionRadius, small_ExplosionPower, ForceMode.Impulse);
-            }
-        }
-    }
-
-
-    public void Normal_Explosion()
-    {
-        Collider[] colliders = Physics.OverlapSphere(this.transform.position, normal_ExplosionRadius);
-        foreach (Collider hit in colliders)
-        {
-            if (hit.gameObject != this.gameObject)
-            {
-                Rigidbody rb = hit.GetComponent<Rigidbody>();
-                if (rb != null)
-                    rb.AddExplosionForce(normal_ExplosionPower, this.transform.position, normal_ExplosionRadius, normal_ExplosionPower, ForceMode.Impulse);
-            }
-        }
-    }
-
-
-    public void Big_Explosion()
-    {
-        Collider[] colliders = Physics.OverlapSphere(this.transform.position, big_ExplosionRadius);
-        foreach (Collider hit in colliders)
-        {
-            if (hit.gameObject != this.gameObject)
-            {
-                Rigidbody rb = hit.GetComponent<Rigidbody>();
-                if (rb != null)
-                    rb.AddExplosionForce(big_ExplosionPower, this.transform.position, big_ExplosionPower, big_ExplosionRadius, ForceMode.Impulse);
-            }
-        }
-    }
-    #endregion
 
 
     /// <summary>
@@ -192,12 +140,31 @@ public class Panda : MonoBehaviour
 
             if (e_dashRegenCooldown > 0f)
             {
-
                 e_dashRegenCooldown -= Time.deltaTime;
             }
         }
     }
-    
+
+
+    private void instantiateExplosion(explosionStrength strength)
+    {
+        GameObject mom = null;
+        switch (strength)
+        {
+            case explosionStrength.weak:
+                explodingForce.GetComponent<Exploding>().strength = explosionStrength.weak;
+                mom = Instantiate(explodingForce, transform.position, Quaternion.identity);
+                Debug.Log("Has been instantiated"); break;
+            case explosionStrength.normal:
+                explodingForce.GetComponent<Exploding>().strength = explosionStrength.normal;
+                mom = Instantiate(explodingForce); break;
+            case explosionStrength.strong:
+                explodingForce.GetComponent<Exploding>().strength = explosionStrength.strong;
+                mom = Instantiate(explodingForce); break;
+        }
+        //Destroy(mom);
+    }
+
 
     private void TimersCountdown()
     {
@@ -210,11 +177,15 @@ public class Panda : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (current_JumpCount == 1) Small_Explosion();
-        if (current_JumpCount == 2) Normal_Explosion();
-        if (current_JumpCount == 3) Big_Explosion();
+        if (current_JumpCount == 1) instantiateExplosion(explosionStrength.weak);
+        if (current_JumpCount == 2) instantiateExplosion(explosionStrength.normal);
+        if (current_JumpCount == 3) instantiateExplosion(explosionStrength.strong);
+
+        //if (current_JumpCount == 1 || current_JumpCount == 2 || current_JumpCount == 3)
+        //    rb.velocity = new Vector3(0f, 0f, 0f);
 
         current_JumpCount = 0;
+        
     }
 
 
