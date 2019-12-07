@@ -4,9 +4,20 @@ using UnityEngine;
 
 public class TreeGate : MonoBehaviour
 {
+    public GameObject seedOne;
+    public GameObject seedTwo;
+
+    public List<GameObject> trees = new List<GameObject>();
+
+    public Vector3 seedOnePosition;
+    public Vector3 seedTwoPosition;
+
+    public int points;
+
     void Start()
     {
-        
+        seedOnePosition = seedOne.transform.position;
+        seedTwoPosition = seedTwo.transform.position;
     }
 
     void Update()
@@ -18,15 +29,15 @@ public class TreeGate : MonoBehaviour
     {
         if(other.name == "Panda")
         {
-            Transform[] trees = GetComponentsInChildren<Transform>();
 
-            foreach (Transform tree in trees)
-            {
-                if (tree.name.Contains("_tree"))
-                {
-                    tree.localScale = new Vector3(0.01f, 0.01f, 0.01f);
-                }
-            }
+            Destroy(seedOne);
+            Destroy(seedTwo);
+
+            Instantiate(trees[Random.Range(0, trees.Count)], seedOnePosition, Quaternion.identity, transform);
+            Instantiate(trees[Random.Range(0, trees.Count)], seedTwoPosition, Quaternion.identity, transform);
+
+            Score score = GameObject.Find("GameManager").GetComponent<Score>();
+            score.points += points;
 
             Destroy(this);
         }

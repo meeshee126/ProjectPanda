@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
-    Transform panda;
+    public GameObject panda;
 
     [SerializeField]
     float lerpSpeed, xOffset, yOffset, zOffset;
 
     void Start()
     {
-      
 
-        panda = GameObject.Find("Panda").GetComponent<Transform>();
-
-        this.transform.position = panda.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!panda.activeInHierarchy)
+            return;
+
         FollowPanda();
     }
 
@@ -28,10 +27,10 @@ public class CameraManager : MonoBehaviour
     {
         Vector3 offset = new Vector3(xOffset, yOffset, zOffset);
 
-        Vector3 lerp = Vector3.Lerp(transform.position, panda.position + offset, lerpSpeed * Time.deltaTime);
+        Vector3 lerp = Vector3.Lerp(transform.position, panda.transform.position + offset, lerpSpeed * Time.deltaTime);
 
         transform.position = lerp;
 
-        transform.LookAt(panda.position);
+        transform.LookAt(panda.transform.position);
     }
 }
