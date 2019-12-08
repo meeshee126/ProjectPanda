@@ -6,8 +6,8 @@ public class CameraManager : MonoBehaviour
 {
     public GameObject panda;
 
-    [SerializeField]
-    float lerpSpeed, xOffset, yOffset, zOffset;
+    
+    public float lerpSpeed, xOffset, yOffset, zOffset;
 
     void Start()
     {

@@ -97,7 +97,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1741.6049, y: 18416.986, z: 12533.299}
-  m_Center: {x: 2623.3818, y: 4304.39, z: -2118.6252}
+  m_Center: {x: 3057, y: 4304.39, z: -2118.6252}
 --- !u!64 &4434348845235581950
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c38dc658a0767e84ab6c5ea737411c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panda: {fileID: 0}
 --- !u!1 &3613448007328178788
 GameObject:
   m_ObjectHideFlags: 0
