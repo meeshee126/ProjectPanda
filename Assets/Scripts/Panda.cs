@@ -79,12 +79,14 @@ public class Panda : MonoBehaviour
                 {
                     current_DashCount--;
                     e_horizontalImpulseTime = horizontalImpulseTime;
+                    GameObject.Find("PlayerDashSFX").GetComponent<AudioSource>().Play();
                 }
                 // Press Up == short-term Forward Dash)
                 if (Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") > 0f)
                 {
                     current_DashCount--;
                     e_forwardImpulseTime = forwardImpulseTime;
+                    GameObject.Find("PlayerDashSFX").GetComponent<AudioSource>().Play();
                 }
             }
             // Press Jump Button == Leaps Upwards

@@ -6,6 +6,7 @@ public class SoundFXHandler : MonoBehaviour
 {
     public AudioClip rolling, pointGather, objSmashing, gameStart;
 
+    
     void Start()
     {
         
