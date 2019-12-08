@@ -128,7 +128,6 @@ GameObject:
   - component: {fileID: 595640024969882577}
   - component: {fileID: 6591205079722645288}
   - component: {fileID: 3290992765154907842}
-  - component: {fileID: 453905539307301114}
   - component: {fileID: 8097213087162425975}
   - component: {fileID: 1145778861276255036}
   m_Layer: 9
@@ -215,19 +214,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c38dc658a0767e84ab6c5ea737411c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &453905539307301114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4847135531262043124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ca2dddc7d3cc7f42b94dfba56dbd0b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPostion: {x: 0, y: 0, z: 0}
 --- !u!64 &8097213087162425975
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -293,7 +279,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9024925853973712370}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89590ebb300c8fe42aadfb402ae6dc2f, type: 3}
   m_Name: 
@@ -302,10 +288,10 @@ MonoBehaviour:
   radius: 70.49
   mask:
     serializedVersion: 2
-    m_Bits: 512
-  spacing: 8
-  spawnMin: 20
-  spawnMax: 20
+    m_Bits: 2048
+  spacing: 3
+  spawnMin: 50
+  spawnMax: 50
   colliders: []
 --- !u!1001 &9164164073641463466
 PrefabInstance:

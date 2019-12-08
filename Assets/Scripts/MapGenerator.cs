@@ -32,6 +32,7 @@ public class MapGenerator : MonoBehaviour
         {
             spawnPostion = new Vector3(-141.8f, 4.48f, 0);
             ramp = Instantiate(ramps[Random.Range(0, ramps.Count)], this.transform.position + spawnPostion, Quaternion.Euler(0f,0, -15f), GameObject.Find("Ramps").transform);
+            ramp.AddComponent<MapGenerator>();
             Destroy(this);
         }
 
@@ -39,7 +40,8 @@ public class MapGenerator : MonoBehaviour
         {
             spawnPostion = new Vector3(-127.74f, 0, 0);
             ramp = Instantiate(ramps[Random.Range(0, ramps.Count)], this.transform.position + spawnPostion, Quaternion.Euler(0f, 0, -15f), GameObject.Find("Ramps").transform);
-            Destroy(this);
+            ramp.AddComponent<MapGenerator>();
+          //  Destroy(this);
         }
     }
 }

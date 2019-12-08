@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -1119585947910792706}
   - component: {fileID: 4674533757271482513}
   - component: {fileID: 717853113450667395}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: H_Big_tree
   m_TagString: Object
   m_Icon: {fileID: 0}
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d046ce615514a6d4fa103a42858f360f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  points: 0
   boxCollider: {fileID: 4674533757271482513}
   speed: 50
 --- !u!65 &4674533757271482513

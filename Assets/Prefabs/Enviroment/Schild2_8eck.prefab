@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2118649603182764689}
   - component: {fileID: 4531189343460313312}
   - component: {fileID: 3802789461689409315}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Schild2_8eck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

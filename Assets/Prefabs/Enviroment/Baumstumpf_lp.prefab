@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2925831085917926428}
   - component: {fileID: 1204045522520305875}
   - component: {fileID: 6723609873887010558}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Baumstumpf_lp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

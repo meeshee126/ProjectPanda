@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 7529183007723335664}
   - component: {fileID: 2688796796638197263}
   - component: {fileID: 9141568504450523803}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Schild3_kreis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
