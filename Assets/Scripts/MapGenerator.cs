@@ -29,7 +29,7 @@ public class MapGenerator : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(rampList.count == 0)
+        if(rampList.count == 5)
         {
             spawnPostion = new Vector3(-93.06f, -4.72f, 0);
             ramp = Instantiate(rampList.endScene, this.transform.position + spawnPostion, Quaternion.Euler(-90f, 0, 0), GameObject.Find("Ramps").transform);
