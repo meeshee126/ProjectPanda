@@ -348,18 +348,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   forwardForce: 1250
   horizontalForce: 1200
-  downwardForce: 350
+  downwardForce: 250
   upwardForce: 15
-  forwardImpulsePower: 500
-  horizontalImpulsePower: 500
-  downwardImpulsePower: 500
-  upwardImpulsePower: 80
-  small_ExplosionPower: 0
-  normal_ExplosionPower: 0
-  big_ExplosionPower: 0
-  small_ExplosionRadius: 0
-  normal_ExplosionRadius: 0
-  big_ExplosionRadius: 0
+  forwardImpulsePower: 750
+  horizontalImpulsePower: 750
+  downwardImpulsePower: 750
+  upwardImpulsePower: 90
   forwardImpulseTime: 0.02
   horizontalImpulseTime: 0.02
   downwardImpulseTime: 0.3
@@ -376,9 +370,10 @@ MonoBehaviour:
   FallAfterJumpSpeed: 4
   layerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 512
   rayViewDistance: 2
   land: 0
+  explodingForce: {fileID: 0}
 --- !u!54 &419935280
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2066,7 +2061,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: ccfa2c7465c21424da6f0523425c4f1c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccfa2c7465c21424da6f0523425c4f1c, type: 3}

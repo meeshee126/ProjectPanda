@@ -61,7 +61,7 @@ public class Panda : MonoBehaviour
         for (int i = 0; i < hits.Length; i++)
         {
             e_AirTime = defaultAirTime;
-            Debug.Log("I am touching the ground");
+            // Touching the ground rn.
         }
 
         // Count Down before quick fall
@@ -177,15 +177,15 @@ public class Panda : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (current_JumpCount == 1) instantiateExplosion(explosionStrength.weak);
-        if (current_JumpCount == 2) instantiateExplosion(explosionStrength.normal);
-        if (current_JumpCount == 3) instantiateExplosion(explosionStrength.strong);
+        //if (current_JumpCount == 1) instantiateExplosion(explosionStrength.weak);
+        //if (current_JumpCount == 2) instantiateExplosion(explosionStrength.normal);
+        //if (current_JumpCount == 3) instantiateExplosion(explosionStrength.strong);
 
         //if (current_JumpCount == 1 || current_JumpCount == 2 || current_JumpCount == 3)
         //    rb.velocity = new Vector3(0f, 0f, 0f);
 
-        current_JumpCount = 0;
-        
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            current_JumpCount = 0;
     }
 
 
