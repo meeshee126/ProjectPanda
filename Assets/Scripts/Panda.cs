@@ -251,6 +251,7 @@ public class Panda : MonoBehaviour
     }
     #endregion
 
+
     #region Impulses DON'T GIVE TO YOUR IMPULSES LUKE!
     private void ApplyForwardImpulse()
     {
@@ -272,6 +273,15 @@ public class Panda : MonoBehaviour
         rb.AddForce(new Vector3(0f, 1f, 0f) * upwardImpulsePower * Time.deltaTime, ForceMode.Impulse);
     }
     #endregion
+
+
+    void RollingSoundHandler()
+    {
+        if (rb.velocity.x < -4f)
+        {
+
+        }
+    }
 
 
     private void SetBasicValues()

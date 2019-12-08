@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundFXHandler : MonoBehaviour
 {
-    AudioSource audioSource;
+    public AudioClip rolling, pointGather, objSmashing, gameStart;
 
     void Start()
     {
