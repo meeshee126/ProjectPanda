@@ -10,6 +10,8 @@ public class EndScene : MonoBehaviour
    public GameObject uiEndScore;
    public GameObject score;
 
+    public MenuManager menuManager;
+
 
     void Start()
     {
@@ -17,9 +19,9 @@ public class EndScene : MonoBehaviour
         score = GameObject.Find("Score");
         panda = GameObject.Find("Panda").GetComponent<Panda>();
         cameraManager = GameObject.Find("Main Camera").GetComponent<CameraManager>();
+        menuManager = GameObject.Find("GameManager").GetComponent<MenuManager>();
 
-        uiEndScore.SetActive(false);
-        
+        //uiEndScore.SetActive(false); 
     }
 
     void Update()
@@ -37,10 +39,6 @@ public class EndScene : MonoBehaviour
             cameraManager.yOffset = 30;
 
             other.gameObject.GetComponent<Panda>().enabled = false;
-            uiEndScore.SetActive(true);
-            score.SetActive(false);
-
-
         }
     }
 }
