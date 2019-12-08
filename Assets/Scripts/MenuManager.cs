@@ -11,6 +11,8 @@ public class MenuManager : MonoBehaviour
     public Animator pandaAni;
     public GameObject uiMain;
     public GameObject uiPause;
+    [SerializeField]
+    private float miniTimer, i = 0;
 
     void Update()
     {
@@ -39,6 +41,7 @@ public class MenuManager : MonoBehaviour
 
             // Pause Music
             transform.Find("BackgroundMusic").GetComponent<AudioSource>().Pause();
+            GameObject.Find("PlayerJumpSFX").GetComponent<AudioSource>().Play();
         }
 
         // if pause menu is active after pressing "escape" button
@@ -56,6 +59,7 @@ public class MenuManager : MonoBehaviour
 
             // Resume Music
             transform.Find("BackgroundMusic").GetComponent<AudioSource>().UnPause();
+            GameObject.Find("PlayerJumpSFX").GetComponent<AudioSource>().Play();
         }
     }
 
@@ -68,6 +72,7 @@ public class MenuManager : MonoBehaviour
 
         // Starts Background Music
         transform.Find("BackgroundMusic").gameObject.SetActive(true);
+        GameObject.Find("AmbientAirBeforeStartMusic").GetComponent<AudioSource>().Stop();
     }
 
     public void ResumeGame()
