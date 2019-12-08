@@ -64,6 +64,7 @@ public class ObjectGenerator : MonoBehaviour
     bool PreventSpawnOverlap(Vector3 spawnPosition)
     {
         colliders = Physics.OverlapSphere(this.transform.position, radius, mask);
+       // colliders = Physics.OverlapBox(this.transform.position, offset);
 
         for (int i = 0; i < colliders.Length; i++)
         {

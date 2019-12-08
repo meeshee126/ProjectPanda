@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class DestroyRamp : MonoBehaviour
 {
-    GameObject panda;
+    public GameObject panda;
 
     void Start()
     {
-        panda = GameObject.Find("Panda");
+        panda = GameObject.Find("Main Camera");
     }
 
     void Update()
     {
-        if (panda == null)
-            return;
+        
 
-        if(Vector3.Distance(this.transform.position, panda.transform.position) > 400)
+        if(Vector3.Distance(this.transform.position, panda.transform.position) > 350)
         {
             Destroy(this.gameObject);
         }
