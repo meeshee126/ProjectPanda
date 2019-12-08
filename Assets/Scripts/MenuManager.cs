@@ -34,8 +34,11 @@ public class MenuManager : MonoBehaviour
             Time.timeScale = 0;
 
             // disable Ball Controlls
-           // Ball ball = GameObject.Find("Ball").GetComponent<Ball>();
+            // Ball ball = GameObject.Find("Ball").GetComponent<Ball>();
             //ball.enabled = false;
+
+            // Pause Music
+            transform.Find("BackgroundMusic").GetComponent<AudioSource>().Pause();
         }
 
         // if pause menu is active after pressing "escape" button
@@ -48,8 +51,11 @@ public class MenuManager : MonoBehaviour
             Time.timeScale = 1;
 
             // enable Ball Controlls
-           // Ball ball = GameObject.Find("Ball").GetComponent<Ball>();
-          //  ball.enabled = true;
+            // Ball ball = GameObject.Find("Ball").GetComponent<Ball>();
+            //  ball.enabled = true;
+
+            // Resume Music
+            transform.Find("BackgroundMusic").GetComponent<AudioSource>().UnPause();
         }
     }
 
@@ -59,6 +65,9 @@ public class MenuManager : MonoBehaviour
         intro.enabled = true;
         pandaAni.enabled = true;
         uiMain.SetActive(false);
+
+        // Starts Background Music
+        transform.Find("BackgroundMusic").gameObject.SetActive(true);
     }
 
     public void ResumeGame()

@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 2160433808117725545}
   - component: {fileID: 8464065566937090202}
   - component: {fileID: 5591632080033456825}
-  - component: {fileID: 3192152740157809699}
-  - component: {fileID: 3462763238301612574}
   m_Layer: 0
   m_Name: pSphere6
   m_TagString: Object
@@ -81,32 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3192152740157809699
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3685169831890629984}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 96.66394, y: 405.31885, z: 99.30909}
-  m_Center: {x: 11.2423, y: -238.41266, z: 10.020077}
---- !u!65 &3462763238301612574
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3685169831890629984}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 352.4331, y: 453.791, z: 277.73938}
-  m_Center: {x: -0.000011920929, y: 214.17664, z: 0.000011920929}
 --- !u!1 &7137489672699881249
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +92,7 @@ GameObject:
   - component: {fileID: 6047025100423748786}
   - component: {fileID: 2295655892253951299}
   m_Layer: 11
-  m_Name: H_Normal_tree
+  m_Name: H_Normal_Tree
   m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

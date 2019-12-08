@@ -40,7 +40,8 @@ public class Exploding : MonoBehaviour
         foreach (Collider hit in colliders)
         {
             if (hit.name != "Panda" || hit.tag != "Ramp" || hit.tag != "Water" ||
-                hit.tag != "Walls" || hit.tag != "Roof")
+                hit.tag != "Walls" || hit.tag != "Roof" || hit.gameObject.layer != LayerMask.NameToLayer("Object") ||
+                hit.gameObject.layer != LayerMask.NameToLayer("Ground"))
             {
                 AddRBs(hit.gameObject);
                 Rigidbody rb = hit.GetComponent<Rigidbody>();
@@ -58,7 +59,8 @@ public class Exploding : MonoBehaviour
         foreach (Collider hit in colliders)
         {
             if (hit.name != "Panda" || hit.tag != "Ramp" || hit.tag != "Water" ||
-                hit.tag != "Walls" || hit.tag != "Roof")
+                hit.tag != "Walls" || hit.tag != "Roof" || hit.gameObject.layer != LayerMask.NameToLayer("Object") ||
+                hit.gameObject.layer != LayerMask.NameToLayer("Ground"))
             {
                 AddRBs(hit.gameObject);
                 Rigidbody rb = hit.GetComponent<Rigidbody>();
@@ -75,7 +77,8 @@ public class Exploding : MonoBehaviour
         foreach (Collider hit in colliders)
         {
             if (hit.name != "Panda" || hit.tag != "Ramp" || hit.tag != "Water" ||
-                hit.tag != "Walls" || hit.tag != "Roof")
+                hit.tag != "Walls" || hit.tag != "Roof" || hit.gameObject.layer != LayerMask.NameToLayer("Object") ||
+                hit.gameObject.layer != LayerMask.NameToLayer("Ground"))
             {
                 AddRBs(hit.gameObject);
                 Rigidbody rb = hit.GetComponent<Rigidbody>();

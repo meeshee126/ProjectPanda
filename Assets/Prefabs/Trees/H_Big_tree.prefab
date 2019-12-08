@@ -89,9 +89,6 @@ GameObject:
   - component: {fileID: 7086460436692479095}
   - component: {fileID: 8722529801608698597}
   - component: {fileID: 157021157899073205}
-  - component: {fileID: 7219433506493247382}
-  - component: {fileID: 2169647723922334277}
-  - component: {fileID: 8687042439290443677}
   m_Layer: 0
   m_Name: pSphere4
   m_TagString: Object
@@ -160,42 +157,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &7219433506493247382
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7593684088664637248}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 120.6032, y: 900.8806, z: 158.22504}
-  m_Center: {x: 32.828796, y: -4.4923306, z: 0.79876184}
---- !u!65 &2169647723922334277
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7593684088664637248}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 737.98645, y: 218.78195, z: 399.3185}
-  m_Center: {x: -3.8867474, y: 67.85651, z: 0}
---- !u!65 &8687042439290443677
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7593684088664637248}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 521.3598, y: 266.8322, z: 399.3185}
-  m_Center: {x: 22.770618, y: 312.53174, z: 0}

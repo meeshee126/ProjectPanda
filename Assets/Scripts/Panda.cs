@@ -20,7 +20,7 @@ public class Panda : MonoBehaviour
     public float horizontalImpulseTime, downwardImpulseTime, upwardImpulseTime;
     private float e_horizontalImpulseTime, e_forwardImpulseTime, e_downwardImpulseTime, e_upwardImpulseTime;
     public float jumpAirTime, defaultAirTime;
-    private float e_AirTime;
+    private float e_AirTime, e_JumpAirTime;
     public float dashRegenCooldown;
     private float e_dashRegenCooldown;
 
@@ -72,7 +72,7 @@ public class Panda : MonoBehaviour
         if (Input.GetButton("Vertical") && Input.GetAxisRaw("Vertical") < 0f) return;
         else
         {
-            if (current_DashCount > 0)
+            if (current_DashCount > 0 && e_JumpAirTime > 0f)
             {
                 // Press Left or Right == (short-term Side Dash, Movetowards Side)
                 if (Input.GetButtonDown("Horizontal"))
@@ -91,11 +91,12 @@ public class Panda : MonoBehaviour
             if (Input.GetButtonDown("Jump") && current_JumpCount < max_JumpCount)
             {
                 current_JumpCount++;
-                e_AirTime = jumpAirTime;
+                e_AirTime = defaultAirTime;
+                e_JumpAirTime = jumpAirTime;
                 e_upwardImpulseTime = upwardImpulseTime;
             }
 
-            if (current_JumpCount == 2 && e_AirTime <= 0f)
+            if (current_JumpCount == 2 && (e_AirTime <= 0f && e_JumpAirTime <= 0f))
             {
                 e_downwardImpulseTime = downwardImpulseTime;
             }
@@ -119,11 +120,12 @@ public class Panda : MonoBehaviour
 
     private bool isTimeToFall()
     {
-        if (e_AirTime <= 0f)
+        if (e_AirTime <= 0f && e_JumpAirTime <= 0f)
         {
             return true;
         }
         if (e_AirTime > 0f) e_AirTime -= Time.deltaTime;
+        if (e_JumpAirTime > 0f) e_JumpAirTime -= Time.deltaTime;
         return false;
     }
 
@@ -148,19 +150,19 @@ public class Panda : MonoBehaviour
 
     private void instantiateExplosion(explosionStrength strength)
     {
-        GameObject mom = null;
+        GameObject tempGO = null;
         switch (strength)
         {
             case explosionStrength.weak:
                 explodingForce.GetComponent<Exploding>().strength = explosionStrength.weak;
-                mom = Instantiate(explodingForce, transform.position, Quaternion.identity);
+                tempGO = Instantiate(explodingForce, transform.position, Quaternion.identity);
                 Debug.Log("Has been instantiated"); break;
             case explosionStrength.normal:
                 explodingForce.GetComponent<Exploding>().strength = explosionStrength.normal;
-                mom = Instantiate(explodingForce); break;
+                tempGO = Instantiate(explodingForce); break;
             case explosionStrength.strong:
                 explodingForce.GetComponent<Exploding>().strength = explosionStrength.strong;
-                mom = Instantiate(explodingForce); break;
+                tempGO = Instantiate(explodingForce); break;
         }
         //Destroy(mom);
     }
@@ -177,6 +179,7 @@ public class Panda : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // I have a dream
         //if (current_JumpCount == 1) instantiateExplosion(explosionStrength.weak);
         //if (current_JumpCount == 2) instantiateExplosion(explosionStrength.normal);
         //if (current_JumpCount == 3) instantiateExplosion(explosionStrength.strong);
@@ -248,6 +251,7 @@ public class Panda : MonoBehaviour
     }
     #endregion
 
+
     #region Impulses DON'T GIVE TO YOUR IMPULSES LUKE!
     private void ApplyForwardImpulse()
     {
@@ -269,6 +273,15 @@ public class Panda : MonoBehaviour
         rb.AddForce(new Vector3(0f, 1f, 0f) * upwardImpulsePower * Time.deltaTime, ForceMode.Impulse);
     }
     #endregion
+
+
+    void RollingSoundHandler()
+    {
+        if (rb.velocity.x < -4f)
+        {
+
+        }
+    }
 
 
     private void SetBasicValues()
