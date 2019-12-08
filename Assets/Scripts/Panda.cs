@@ -94,6 +94,7 @@ public class Panda : MonoBehaviour
                 e_AirTime = defaultAirTime;
                 e_JumpAirTime = jumpAirTime;
                 e_upwardImpulseTime = upwardImpulseTime;
+                GameObject.Find("PlayerJumpSFX").GetComponent<AudioSource>().Play();
             }
 
             if (current_JumpCount == 2 && (e_AirTime <= 0f && e_JumpAirTime <= 0f))
@@ -188,7 +189,10 @@ public class Panda : MonoBehaviour
         //    rb.velocity = new Vector3(0f, 0f, 0f);
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
             current_JumpCount = 0;
+            GameObject.Find("PlayerLandSFX").GetComponent<AudioSource>().Play();
+        }
     }
 
 
@@ -273,16 +277,7 @@ public class Panda : MonoBehaviour
         rb.AddForce(new Vector3(0f, 1f, 0f) * upwardImpulsePower * Time.deltaTime, ForceMode.Impulse);
     }
     #endregion
-
-
-    void RollingSoundHandler()
-    {
-        if (rb.velocity.x < -4f)
-        {
-
-        }
-    }
-
+    
 
     private void SetBasicValues()
     {
